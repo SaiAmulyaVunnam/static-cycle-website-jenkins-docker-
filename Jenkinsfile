@@ -8,7 +8,7 @@ pipeline {
         }
         stage ("Deploy") {
             steps {
-                sh 'docker run -itd --name static -p 4455:80 staicbuild'
+                sh 'docker run -itd --name static -p 4455:80 staticbuild'
             }
         }
     }
