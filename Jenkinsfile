@@ -1,18 +1,3 @@
-pipeline {
-    agent any
-    stages {
-        stage ("Build") {
-            steps {
-                sh 'docker build -t staticbuild .'
-            }
-        }
-        stage ("Deploy") {
-            steps {
-                sh 'docker run -itd --name static -p 4456:80 staticbuild'
-            }
-        }
-    }
-}
 
 
 pipeline {
@@ -30,7 +15,7 @@ pipeline {
         // Building docker image
         stage('Build docker image'){
             steps{
-                sh "docker build -t $registry:${BUILD_NUMBER} ."
+                sh "docker build -t staticbuild1 ."
             }
             post {
                 success {
@@ -70,7 +55,7 @@ pipeline {
         // docker run
         stage("Docker run"){
             steps{
-                sh "docker run -itd --name website-cont -p 8081:80 $registry:${BUILD_NUMBER}"
+                sh "docker run -itd --name website-cont -p 8081:80 staticbuild1"
             }
         }
         // post {
