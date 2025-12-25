@@ -30,8 +30,8 @@ pipeline {
           //  steps{
                // sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin $registry"
               //  sh "docker push $registry:${BUILD_NUMBER}"
-            }
-        }
+    //        }
+      //  }
         
         // post {
         //     success {
