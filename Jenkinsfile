@@ -26,10 +26,10 @@ pipeline {
         }
                 
         // Uploading Docker image into ECR
-        stage("Uploading to ECR"){
-            steps{
-                sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin $registry"
-                sh "docker push $registry:${BUILD_NUMBER}"
+       // stage("Uploading to ECR"){
+          //  steps{
+               // sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin $registry"
+              //  sh "docker push $registry:${BUILD_NUMBER}"
             }
         }
         
@@ -42,10 +42,10 @@ pipeline {
         // }
         
         // stopping previous container and removing
-        stage("Stopping previous container"){
-            steps{
-                sh "docker ps -f name=website-cont -q |xargs --no-run-if-empty docker container stop"
-                sh "docker rm website-cont"
+  //      stage("Stopping previous container"){
+    //        steps{
+      //          sh "docker ps -f name=website-cont -q |xargs --no-run-if-empty docker container stop"
+        //        sh "docker rm website-cont"
                 // sh "docker ls -a -f name=website-cont -q | xargs -r docker container rm"
             }
         }
